@@ -35,7 +35,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="sel1">Select the month:</label>
-                    <select class="form-control" id="sel1" ng-model="m.month">
+                    <select class="form-control" id="sel1" ng-model="m.month" ng-change="m.changed()">
                         <option>January</option>
                         <option>February</option>
                         <option>March</option>

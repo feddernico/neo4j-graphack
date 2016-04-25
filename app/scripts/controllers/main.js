@@ -8,7 +8,7 @@
  * Controller of the neo4jHackatonApp
  */
 angular.module('neo4jHackatonApp')
-    .controller('MainCtrl', [function () {
+    .controller('MainCtrl', ['$scope', function ($scope) {
         var self = this;
 
         // Create a driver instance, for the user neo4j with password neo4j.
@@ -18,9 +18,18 @@ angular.module('neo4jHackatonApp')
         var session = driver.session();
 
         var airports = [];
+        self.month = {};
 
-        self.getAirports = function () {
-            session.run("OPTIONAL MATCH (a:Airport)<-[:ORIGIN]-(d:Flight {month:\"November\"})-[:DELAYED_BY]-(:Cause) WITH a, d OPTIONAL MATCH (a)<-[:ORIGIN]-(c:Flight {month:\"November\"})-[:CANCELLED_BY]-(:Cause) RETURN a.name as name, count(d) as delay, count(c) as canceled, count(d) * 0.5 + count(c) * 2 as if ORDER BY if desc").subscribe({
+        self.changed = function () {
+            self.getAirports(self.month)
+        };
+
+        self.getAirports = function (m) {
+            var tab = document.getElementById("tab");
+            tab.innerHTML = "";
+            session.run("OPTIONAL MATCH (a:Airport)<-[:ORIGIN]-(d:Flight {month:{month}})-[:DELAYED_BY]-(:Cause) WITH a, d OPTIONAL MATCH (a)<-[:ORIGIN]-(c:Flight {month:\"November\"})-[:CANCELLED_BY]-(:Cause) RETURN a.name as name, count(d) as delay, count(c) as canceled, count(d) * 0.5 + count(c) * 2 as if ORDER BY if desc", {
+                month: m
+            }).subscribe({
                 onNext: function (r) {
                     var tab = document.getElementById("tab");
                     var tr = document.createElement('tr');
@@ -48,7 +57,7 @@ angular.module('neo4jHackatonApp')
             })
         };
 
-        self.getAirports();
+        //self.getAirports();
 
 
         // Run a Cypher statement, reading the result in a streaming manner as records arrive:
