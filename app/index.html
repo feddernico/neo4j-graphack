@@ -22,14 +22,62 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-    </div>
 
     <div class="container">
-        <div ng-view=""></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>LLA</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                 <div class="form-group">   
+                     <label for="sel1">Select the month:</label>
+                     <select class="form-control" id="sel1">
+                         <option>1</option>
+                         <option>2</option>
+                         <option>3</option>
+                         <option>4</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+            <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Flight Name</th>
+        <th>Delay</th>
+        <th>Cancelled</th>
+        <th>Impact Factor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+            </div>
     </div>
-
-    <div class="footer">
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
