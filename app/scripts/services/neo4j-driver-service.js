@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('neo4jHackatonApp').service('Neo4j', function () {
-    var self = this;
-    self.driver = neo4j.driver;
+angular.module('neo4jHackatonApp').factory('Neo4j', function () {
+    return {
+        v1: neo4j
+    };
 });
