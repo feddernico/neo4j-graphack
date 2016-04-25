@@ -23,7 +23,7 @@
 
     <!-- Add your site or application content here -->
 
-    <div id="container" class="container">
+    <div id="container" class="container" ng-controller="MainCtrl as m">
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
@@ -33,59 +33,47 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                 <div class="form-group">   
-                     <label for="sel1">Select the month:</label>
-                     <select class="form-control" id="sel1">
-                         <option>January</option>
-                         <option>February</option>
-                         <option>March</option>
-                         <option>April</option>
-                         <option>May</option>
-                         <option>June</option>
-                         <option>July</option>
-                         <option>August</option>
-                         <option>September</option>
-                         <option>October</option>
-                         <option>November</option>
-                         <option>December</option>
-                  </select>
+                <div class="form-group">
+                    <label for="sel1">Select the month:</label>
+                    <select class="form-control" id="sel1" ng-model="m.month">
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-            <table class="table table-hover table-striped">
-    <thead>
-      <tr>
-        <th>Flight Name</th>
-        <th>Delay</th>
-        <th>Cancelled</th>
-        <th>Impact Factor</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>London Heathrow - Rome Fiumicino</td>
-        <td>120</td>
-        <td>32</td>
-        <td>1.5</td>
-      </tr>
-      <tr>
-        <td>New York JFK - Paris Charles De Gaulle</td>
-        <td>95</td>
-        <td>25</td>
-        <td>1.2</td>
-      </tr>
-      <tr>
-        <td>Rome Fiumicino - London Gatwick</td>
-        <td>70</td>
-        <td>10</td>
-        <td>0.9</td>
-      </tr>
-    </tbody>
-  </table>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Flight Name</th>
+                            <th>Delay</th>
+                            <th>Cancelled</th>
+                            <th>Impact Factor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tab">
+                        <tr ng-repeat="c in m.aps">
+                            <td>c.name</td>
+                            <td>c.delay</td>
+                            <td>c.canceled</td>
+                            <td>c.if</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-    </div>
+        </div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
